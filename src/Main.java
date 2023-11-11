@@ -1,12 +1,7 @@
 public class Main {
     public static void main(String[] args) {
 
-        numberToWords(435);
-        System.out.println();
-        numberToWords(129860);
-        System.out.println();
-
-
+        numberToWords(453);
 
     }
 
@@ -17,12 +12,17 @@ public class Main {
             return;
         }
 
-        number = reverse(number);
+        int reverse = reverse(number);
 
-        while (number != 0) {
+        int leadingZeroes = getDigitCount(number) - getDigitCount(reverse);
 
-            int lastDigit = number % 10;
+        if (number == 0) {
+            System.out.println("Zero");
+            return;
+        }
 
+        while (reverse != 0) {
+            int lastDigit = reverse % 10;
             switch (lastDigit) {
                 case 0 -> System.out.println("Zero");
                 case 1 -> System.out.println("One");
@@ -35,7 +35,10 @@ public class Main {
                 case 8 -> System.out.println("Eight");
                 case 9 -> System.out.println("Nine");
             }
-            number = number / 10;
+            reverse /= 10;
+        }
+        for (int i = 0; i < leadingZeroes; i++){
+            System.out.println("Zero");
         }
     }
 
@@ -57,12 +60,11 @@ public class Main {
         if (number == 0) {
             return 1;
         }
-
         int count = 0;
 
-        for (int i = 0; i <= number; i *= 10) {
+        for (int i = 1; i <= number; i *= 10) {
             count++;
-            return count;
         }
+        return count;
     }
 }
