@@ -3,7 +3,7 @@ public class Main {
 
         numberToWords(435);
         System.out.println();
-        numberToWords(12986);
+        numberToWords(129860);
         System.out.println();
 
 
@@ -17,8 +17,12 @@ public class Main {
             return;
         }
 
+        number = reverse(number);
+
         while (number != 0) {
+
             int lastDigit = number % 10;
+
             switch (lastDigit) {
                 case 0 -> System.out.println("Zero");
                 case 1 -> System.out.println("One");
@@ -54,11 +58,11 @@ public class Main {
             return 1;
         }
 
-        
+        int count = 0;
 
-
+        for (int i = 0; i <= number; i *= 10) {
+            count++;
+            return count;
+        }
     }
-
-
-
 }
